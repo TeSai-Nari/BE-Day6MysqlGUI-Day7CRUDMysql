@@ -19,7 +19,7 @@ app.use(bodyparser.urlencoded({extended:false}));       // Buat user kirim data 
 const db=mysql.createConnection({                       // Menyambungkan dg mysql.createConnection (obj)
     host    :'localhost',                                   // Isi sesuai data mysql workbench
     user    :'tesai',
-    password:'Jesusnumber1!',
+    password:'*************',
     database:'hokijc12',                                // Pilih database
     port    :'3306'
 /*^*///multipleStatements: true                         // bisa true / false, berfungsi u/ membuat lbh dari 1 query
@@ -62,7 +62,7 @@ app.get('/users',(req,res )=> {                                       // waktu r
     var sql = `select * from pengguna where username='${username}' and password ='${password}'`
     db.query(sql,(err,result) =>{                                    // perlu query (bukan param krn butuh username & password)
         if(err) return res.status(500).send(err)
-        return res.status(200).send(result[0])                      // karena hasilnya berupa array of obj & hanya ada 1. Maka yg tadinya result -->result[0]
+        return res.status(200).send(result[0])                       // karena hasilnya berupa array of obj & hanya ada 1. Maka yg tadinya result -->result[0]
     })
     /*Cara 2: versi tanda tanya */
     // var sql =  'select * from pengguna where username = ? and password = ?' // Spesial khusus mysql pakai tanda tanya
@@ -73,8 +73,8 @@ app.get('/users',(req,res )=> {                                       // waktu r
 })
 /* .....................................Menambah user............................................*/
 //cara day3
-// app.post('/products',(req,res)=>{                                       // mau nge-post(tambah) data. Nama '/products' tak papa sama krn method beda (1 di .post, 1 di .get)                            
-//     arrprod.push({...req.body, id: arrprod.length+1})                   // balik lagi ke post.man, masukin username & passwordnya lagi   
+// app.post('/products',(req,res)=>{                                        // mau nge-post(tambah) data. Nama '/products' tak papa sama krn method beda (1 di .post, 1 di .get)                            
+//     arrprod.push({...req.body, id: arrprod.length+1})                    // balik lagi ke post.man, masukin username & passwordnya lagi   
 //     res.send(arrprod)
 // })
 app.post('/users',(req,res)=>{                                              // Ingat kalau post harus pakai postman
