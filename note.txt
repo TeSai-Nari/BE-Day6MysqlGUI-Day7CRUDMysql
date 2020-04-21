@@ -1,0 +1,34 @@
+
+CATATAN U/ DAY 7
+
+* Note get users
+Dibuat var sql supaya isi, db.query tidak terlalu panjang
+Password karena dia tipenya: varchar maka pakai kutip ''
+
+*Note post bag 1
+set ? --> isinya harus sesuai {"username" --> tak boleh typo*/
+
+*Note post bag 2
+Awalnya seperti ini:
+
+  db.query(sql,(err,result)=>{                        
+    if(err) return res.status(500).send(err)
+    return res.status(200).send(result)
+
+Tapi dalam regis / login, setelah berhasil masuk akan ditampilkan semua data (kayak balik ke home)
+jadinya (kalau tak pakai if) seperti ini: 
+
+    db.query(sql,(err,result)=>{
+        db.query('select * from pengguna',(err,result1)=>{
+            return res.status(200).send(result1)     
+
+*Note post bag 3
+
+1. Kalau sdh selesai buat syntaks post, pergi ke postman, masukkan obj berisi username & password (pelajaran day3)
+ 2. Saat klik send di postman akan keluar hasil:
+     fieldCount...
+     affectedRows
+     insertId: 9..
+3. Kalau berhasil memang begitu hasilnya. (tapi sbnr-nya tak butuh kalau di front-end)
+4. Kalau di refresh di web-browser akan keluar hasil + yang ditambah
+5. Kalau di select * from pengguna di mysql akan keluar hasil + yang ditambah
